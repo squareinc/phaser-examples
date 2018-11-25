@@ -17,6 +17,8 @@ function create() {
 
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
-    game.add.sprite(0, 0, 'einstein');
+    var s = game.add.sprite(80, 0, 'einstein');
+
+    s.rotation = 0.14;
 
 }

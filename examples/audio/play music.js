@@ -31,7 +31,11 @@ function create() {
 
 function changeVolume(pointer) {
 
-    if (pointer.y < 300)
+    if (pointer.y < 100)
+    {
+        music.mute = false;
+    }
+    else if (pointer.y < 300)
     {
         music.volume += 0.1;
     }

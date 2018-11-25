@@ -39,6 +39,8 @@ function create() {
 
 }
 
+var keys;
+
 function start() {
 
     text.text = 'Press 1, 2 or 3';
@@ -58,13 +60,33 @@ function start() {
     sword.onStop.add(soundStopped, this);
     blaster.onStop.add(soundStopped, this);
 
-    var key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    var key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-    var key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+    keys = game.input.keyboard.addKeys({ blaster: Phaser.Keyboard.ONE, explosion: Phaser.Keyboard.TWO, sword: Phaser.Keyboard.THREE });
 
-    key1.onDown.add(playFx, this);
-    key2.onDown.add(playFx, this);
-    key3.onDown.add(playFx, this);
+    keys.blaster.onDown.add(playFx, this);
+    keys.explosion.onDown.add(playFx, this);
+    keys.sword.onDown.add(playFx, this);
+
+    //  And for touch devices you can also press the top, middle or bottom of the screen
+    game.input.onDown.add(onTouch, this);
+
+}
+
+function onTouch(pointer) {
+
+    var b = game.height / 3;
+
+    if (pointer.y < b)
+    {
+        playFx(keys.blaster);
+    }
+    else if (pointer.y > b * 2)
+    {
+        playFx(keys.sword);
+    }
+    else
+    {
+        playFx(keys.explosion);
+    }
 
 }
 

@@ -4,8 +4,8 @@ var game = new Phaser.Game(800, 600, Phaser.WEBGL, 'phaser-example', { preload: 
 function preload() {
 
     game.load.image('phaser', 'assets/sprites/phaser2.png');
-    game.load.script('filterX', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurX.js');
-    game.load.script('filterY', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurY.js');
+    game.load.script('BlurX', 'https://cdn.rawgit.com/photonstorm/phaser-ce/master/filters/BlurX.js');
+    game.load.script('BlurY', 'https://cdn.rawgit.com/photonstorm/phaser-ce/master/filters/BlurY.js');
 
 }
 
@@ -16,6 +16,9 @@ function create() {
 
 	var blurX = game.add.filter('BlurX');
 	var blurY = game.add.filter('BlurY');
+
+    blurX.blur = 100;
+    blurY.blur = 1;
 
 	logo.filters = [blurX, blurY];
 

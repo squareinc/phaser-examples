@@ -449,6 +449,10 @@
       "title": "debug draw"
     },
     {
+      "file": "debug+fps.js",
+      "title": "debug fps"
+    },
+    {
       "file": "debug+input.js",
       "title": "debug input"
     },
@@ -759,6 +763,10 @@
     {
       "file": "tanks.js",
       "title": "tanks"
+    },
+    {
+      "file": "sliding+puzzle.js",
+      "title": "sliding puzzle"
     }
   ],
   "geometry": [
@@ -1493,6 +1501,10 @@
   ],
   "text": [
     {
+      "file": "add+char+by+char.js",
+      "title": "add char by char"
+    },
+    {
       "file": "bitmap+fonts.js",
       "title": "bitmap fonts"
     },
@@ -1679,6 +1691,14 @@
     {
       "file": "tilemap+ray+cast.js",
       "title": "tilemap ray cast"
+    },
+    {
+      "file": "dig.js",
+      "title": "removing tiles"
+    },
+    {
+      "file": "multiple-layer-collision.js",
+      "title": "collision on multiple layers"
     }
   ],
   "time": [

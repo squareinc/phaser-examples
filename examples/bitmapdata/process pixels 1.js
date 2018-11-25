@@ -15,13 +15,13 @@ function create() {
     bmd.load('crystal');
     bmd.addToWorld(game.world.centerX, game.world.centerY, 0.5, 0.5);
 
-	game.input.onDown.add(startProcess, this);
+    game.input.onDown.add(startProcess, this);
 
 }
 
 function startProcess () {
 
-	bmd.processPixelRGB(forEachPixel, this);
+    bmd.processPixelRGB(forEachPixel, this);
 
 }
 
@@ -36,16 +36,16 @@ function forEachPixel (pixel) {
     * If a new color object is returned the pixel will be set to the r, g, b and a color values given within it.
     */
 
-    //	The incoming pixel values
-	var r = pixel.r;
-	var g = pixel.g;
-	var b = pixel.b;
+    //  The incoming pixel values
+    var r = pixel.r;
+    var g = pixel.g;
+    var b = pixel.b;
 
-	//	And let's mix them up a bit
-	pixel.r = b;
-	pixel.g = g;
-	pixel.b = r;
+    //  And let's mix them up a bit
+    pixel.r = b;
+    pixel.g = g;
+    pixel.b = r;
 
-	return pixel;
+    return pixel;
 
 }

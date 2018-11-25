@@ -1,7 +1,8 @@
-
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create });
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create });
 
 function preload() {
+
+    game.forceSingleUpdate = true;
 
     //  You can fill the preloader with as many assets as your game requires
 
@@ -20,11 +21,8 @@ function create() {
     var tween = game.add.tween(sprite);
 
     //  The object defines the properties to tween.
-    //  In this case it will move to x 600
-    //  The 6000 is the duration in ms - 6000ms = 6 seconds
-    tween.to({ x: 600 }, 6000);
-
-    //  And this starts it going
-    tween.start();
+    //  In this case it will move to x 800
+    //  The 5000 is the duration in ms - 5000ms = 5 seconds
+    tween.to({ x: 800 }, 5000, 'Linear', true, 0);
 
 }

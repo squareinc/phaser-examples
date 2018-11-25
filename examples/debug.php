@@ -101,7 +101,11 @@
         'ninja' => false,
         'box2d' => false,
         'joystick' => false,
-        'creature' => true
+        'creature' => true,
+        'video' => true,
+        'rope' => true,
+        'tilesprite' => true,
+        'particlestorm' => true
     );
 
     foreach ($modules as $module => $modset)
@@ -136,15 +140,16 @@
 <!doctype html>
 <html>
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Phaser Examples - <?php echo $title ?></title>
-        <script src="_site/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+        <script src="_site/js/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script src="_site/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="_site/js/RecordRTC.js" type="text/javascript"></script>
         <script src="_site/js/Blob.js" type="text/javascript"></script>
         <script src="_site/js/CanvasToBlob.js" type="text/javascript"></script>
         <script src="_site/js/FileSaver.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="_site/css/debug.css" />
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"> -->
         <?php
             if ($target == 'div')
             {
@@ -155,7 +160,8 @@
                 }
                 else
                 {
-                    echo "<script src=\"_site/phaser/' . $config_phaser_min . '\" type=\"text/javascript\"></script>";
+                    echo '<script src="_site/phaser/' . $config_phaser_min . '" type="text/javascript"></script>';
+                    // echo '<script src="../../phaser/dist/phaser-test.js" type="text/javascript"></script>';
                 }
 
                 if ($modules['box2d'])
@@ -178,6 +184,37 @@
                     echo "<script src=\"/arcadestorm/VirtualJoysticks/plugin/src/DPad.js\" type=\"text/javascript\"></script>";
                     echo "<script src=\"/arcadestorm/VirtualJoysticks/plugin/src/Button.js\" type=\"text/javascript\"></script>";
                 }
+
+                if ($modules['particlestorm'])
+                {
+                    //  This is only enabled if you have the Phaser ParticleStorm Plugin Source files
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/ParticleStorm.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/Emitter.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/Particle.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/GravityWell.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/Graph.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Base.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Point.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Rectangle.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Circle.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Ellipse.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Line.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Spline.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Text.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/zones/Image.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/controls/Texture.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/controls/Color.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/controls/Transform.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/Base.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/Sprite.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/Pixel.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/BitmapData.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/RenderTexture.js\" type=\"text/javascript\"></script>";
+                    echo "<script src=\"/phaser-particles-plugin/plugin/src/renderers/SpriteBatch.js\" type=\"text/javascript\"></script>";
+                }
+
+                echo "<script src=\"/phaser-tiled/build/phaser-tiled.js\" type=\"text/javascript\"></script>";
+
             }
         ?>
     </head>
@@ -234,6 +271,8 @@
                 <input type="button" id="step" value="step" class="mini" />
 
                 <hr />
+
+                <input type="button" id="minimal" value="minimal" />
 
                 <?php
                     if ($dist === 'php')
@@ -416,6 +455,12 @@
 
             ?>
 
+            $("#minimal").click(function() {
+
+                window.location.href = 'minimal.php?<?php echo $_SERVER['QUERY_STRING'] ?>';
+
+            });
+
             $("#dist").click(function() {
 
                 console.log($(this).prop('value'));
@@ -530,6 +575,8 @@
             });
 
         </script>
+
+        <?php //print_r($_SERVER) ?>
 
     </body>
 </html>

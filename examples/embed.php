@@ -1,5 +1,5 @@
 <?php
-    $v = "2.3.0";
+    $v = "2.6.2";
 
     if (isset($_GET['v']))
     {
@@ -29,8 +29,8 @@
         <script src="_site/phaser/<?php echo $embedJS ?>" type="text/javascript"></script>
         <style>
             body {
-                margin: 0;
-                padding: 0;
+                margin: 0px;
+                padding: 0px;
                 font-family: Arial;
                 font-size: 14px;
                 background-color: #000000;
@@ -44,6 +44,7 @@
         <script type="text/javascript">
 
         var IDE_HOOK = false;
+        var VERSION = '<?php echo $v ?>';
 
         <?php
             if (isset($_GET['f']))
